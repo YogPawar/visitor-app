@@ -1,5 +1,5 @@
 # visitor-app
-### Prerequistion
+### Prerequisites
   -Create databse naming visitordb
   - update  db connection user name and password in dbconfig.properties file.
   #### To create the table in db automatically uncomment below properties in dbconfig.properties file
