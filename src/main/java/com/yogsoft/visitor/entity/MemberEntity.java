@@ -31,6 +31,17 @@ public class MemberEntity {
 
 	@Column(name = "is_owner", nullable = false, updatable = true)
 	private boolean isOwner;
+	
+	@Column(name = "photo_path")
+	private String photoPath;
+
+	public String getPhotoPath() {
+		return photoPath;
+	}
+
+	public void setPhotoPath(String photoPath) {
+		this.photoPath = photoPath;
+	}
 
 	public int getMemberId() {
 		return memberId;

@@ -64,5 +64,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		registry.addConverter(visitorToVisitorEntity);
 		registry.addConverter(entityToVisitor);
 	}
+	
+	@Bean(name = "multipartResolver")
+	public CommonsMultipartResolver multipartResolver() {
+	    CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+	    multipartResolver.setMaxUploadSize(1000000);
+	    return multipartResolver;
+	}
 
 }

@@ -10,11 +10,30 @@
 	rel="stylesheet">
 <script src="<c:url value="/resources/js/jquery.js" />"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+
+<style>
+
+/* Set display to none for image*/
+#image {
+	display: none;
+}
+</style>
+<script>
+	function show(id) {
+
+		/* Access image by id and change
+		the display property to block*/
+		var id = id;
+		document.getElementById('image').style.display = "block";
+
+		document.getElementById(id).style.display = "none";
+	}
+</script>
 </head>
 <body style="background-color: #E9F7F6">
 	<div class="container">
 		<div class="col-md-offset-1 col-md-10">
-		<div align="center">
+			<div align="center">
 				<font color="Green" size="20"> <b>Member List</b>
 				</font>
 			</div>
@@ -28,8 +47,8 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav">
-						<li class="nav-item active"><a class="nav-link" href="#">Menu
-								<span class="sr-only">(current)</span>
+						<li class="nav-item active"><a class="nav-link"
+							href="/visitors/menu">Menu <span class="sr-only">(current)</span>
 						</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/visitors/user/add">User</a></li>
@@ -52,6 +71,10 @@
 			<input type="button" value="Add Member"
 				onclick="window.location.href='add'; return false;"
 				class="btn btn-primary" /> <br /> <br />
+
+			<form:form action="search">
+
+			</form:form>
 			<div class="panel panel-info">
 				<div class="panel-body">
 					<table class="table table-striped table-bordered table-hover">
@@ -60,6 +83,7 @@
 							<th><font color="purple">Last Name</font></th>
 							<th><font color="purple">Address</font></th>
 							<th><font color="purple">Is Owner</font></th>
+							<th><font color="purple">photo</font>
 							<th><font color="purple">Action</font></th>
 						</tr>
 
@@ -83,6 +107,14 @@
 									${tempMember.floor}</td>
 								<td>${tempMember.owner}</td>
 								<td>
+									<div>
+										<img id="image" src="${tempMember.photoPath}" alt="GFG image" />
+									</div>
+
+									<button type="button" onclick="show(${tempMember.firstName})"
+										id="${tempMember.firstName}">Show Photo</button>
+								</td>
+								<td>
 									<!-- display the update link --> <a href="${updateLink}">Update</a>
 									| <a href="${deleteLink}"
 									onclick="if (!(confirm('Are you sure you want to delete this User?'))) return false">Delete</a>
@@ -99,5 +131,8 @@
 		</div>
 
 	</div>
+	<script src="<c:url value="/resources/js/jquery-min.js" />"></script>
+	<script src="<c:url value="/resources/js/jquery.js" />"></script>
+	<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </body>
 </html>

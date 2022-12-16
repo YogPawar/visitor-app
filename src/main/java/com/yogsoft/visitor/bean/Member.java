@@ -11,6 +11,16 @@ public class Member {
 	private String floor;
 	private boolean isOwner;
 	private int addressId;
+	
+	private String photoPath;
+
+	public String getPhotoPath() {
+		return photoPath;
+	}
+
+	public void setPhotoPath(String photoPath) {
+		this.photoPath = photoPath;
+	}
 
 	public int getAddressId() {
 		return addressId;

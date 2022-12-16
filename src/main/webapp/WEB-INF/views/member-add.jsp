@@ -9,6 +9,10 @@
 <title>User Registration Form</title>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
+	type="text/javascript"></script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#clear").click(function() {
@@ -19,7 +23,20 @@
 
 		});
 
+		$("#fileToUpload").change(function() {
+			display(this);
+		});
+
 	});
+	function display(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(event) {
+				$('#myid').attr('src', event.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
 </script>
 </head>
 <body style="background-color: #E9F7F6">
@@ -37,8 +54,8 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
-					<li class="nav-item active"><a class="nav-link" href="#">Menu
-							<span class="sr-only">(current)</span>
+					<li class="nav-item active"><a class="nav-link"
+						href="/visitors/menu">Menu <span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="/visitors/user/add">User</a></li>
@@ -60,7 +77,8 @@
 		<div class="panel panel-info">
 			<div class="form-group">
 				<form:form action="save" cssClass="form-horizontal" method="post"
-					modelAttribute="member" id="member-form">
+					modelAttribute="member" id="member-form"
+					enctype="multipart/form-data">
 
 					<!-- need to associate this data with customer id -->
 					<form:hidden path="memberId" />
@@ -113,17 +131,33 @@
 					</div>
 
 					<div class="form-group">
+						<label for="isOwner" class="col-md-3 control-label">Upload
+							Photo</label>
+						<div class="col-md-9">
+							<input name="file" id="fileToUpload" type="file"
+								title="select photo" /> <img id="myid" src="#"
+								alt="preview photo" width="125" height="125" />
+						</div>
+					</div>
+
+
+
+
+					<div class="form-group">
 						<!-- Button -->
 						<div class="col-md-offset-3 col-md-9">
 							<form:button class="btn btn-success">Register</form:button>
 							<input type="reset" value="Clear"
 								class="btn btn-default btn-primary" id="clear">
 						</div>
+					</div>
 				</form:form>
 			</div>
 		</div>
 	</div>
-	</div>
+
+	<script src="<c:url value="/resources/js/jquery-min.js" />"></script>
+
 	<script src="<c:url value="/resources/js/jquery.js" />"></script>
 	<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </body>

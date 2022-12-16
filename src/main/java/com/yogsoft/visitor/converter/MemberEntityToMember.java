@@ -20,6 +20,8 @@ public class MemberEntityToMember implements Converter<MemberEntity, Member> {
 		member.setRoomNo(source.getAddress().getRoomNo());
 		member.setWing(source.getAddress().getWing());
 		member.setAddressId(source.getAddress().getAddressId());
+		member.setPhotoPath(source.getPhotoPath());
+
 		return member;
 	}
 

@@ -17,6 +17,7 @@ public class MemberToMemberEntity implements Converter<Member, MemberEntity> {
 		memberEntity.setFirstName(source.getFirstName());
 		memberEntity.setLastName(source.getLastName());
 		memberEntity.setOwner(source.isOwner());
+		memberEntity.setPhotoPath(source.getPhotoPath());
 		memberEntity.setAddress(getAddress(source));
 		return memberEntity;
 	}
